@@ -1,18 +1,20 @@
 function getComputerChoice() {
     let x = Math.floor(Math.random() * 3);
-    let result;
-    (x==0) ? result = "Rock" :
-    (x==1) ? result = "Paper" :
-    result = "Scissors";
-    return result;
+    let choice;
+    if (x===0) {
+        choice = "Rock";
+    } else if (x===1) {
+        choice = "Paper";
+    } else {
+        choice = "Scissors";
+    }
+    return choice;
 }
 
 let roundResult;
-let playerSelection;
 let winMessage;
 let lossMessage;
 let tieMessage;
-const computerSelection = getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
@@ -42,7 +44,7 @@ function game() {
     let userInput;
     while (rounds < 5 && wins < 3 && losses < 3) {
         userInput = prompt("Rock, paper, or scissors?");
-        roundResult = playRound(userInput, computerSelection);
+        roundResult = playRound(userInput, getComputerChoice());
         if (roundResult=="win") {
             console.log(winMessage);
             wins++;
