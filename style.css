@@ -12,6 +12,10 @@ div {
     font-size: 24px;
 }
 
+h1 {
+    text-align: center;
+}
+
 .scoreboard,
 .rpsBtns,
 .resultMsg {
@@ -26,7 +30,6 @@ div {
 
 .rpsBtns {
     justify-content: center;
-    align-content: stretch;
 }
 
 .btn {
@@ -41,6 +44,7 @@ div {
 .paper,
 .scissors {
     width: min-content;
+    height: max-content;
 }
 
 .rock {
