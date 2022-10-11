@@ -9,6 +9,8 @@ lossesMsg.textContent = `Losses: ${losses}`;
 let tiesMsg = document.querySelector('.tiesMsg');
 tiesMsg.textContent = `Ties: ${ties}`;
 
+let buttons = document.querySelector('.btn');
+
 const rockBtn = document.querySelector('.btn.rock');
 rockBtn.onclick = () => tryToPlay("Rock", getComputerChoice());
 
@@ -32,6 +34,7 @@ let resultMsg = document.querySelector('.resultMsg');
 resultMsg.textContent = "Choose your weapon to start the game!";
 
 const newGameBtn = document.querySelector('.btn.newGame');
+newGameBtn.style.cssText = 'background: #E5E28B';
 newGameBtn.onclick = () => newGame();
 
 function newGame() {
@@ -63,7 +66,7 @@ function playRound(playerSelection, computerSelection) {
     rounds += 1;
     let roundResult;
     if (playerSelection===computerSelection) {
-        tieRound(playerSelection, computerSelection);
+        tieRound(playerSelection);
     } else if (computerSelection=="Rock") {
         (playerSelection=="Paper") ? winRound(playerSelection, computerSelection)
             : loseRound(playerSelection, computerSelection);
@@ -91,9 +94,14 @@ function loseRound(playerSelection, computerSelection) {
     lossesMsg.textContent = `Losses: ${losses}`;
 }
 
-function tieRound(playerSelection, computerSelection) {
-    resultMsg.textContent = 
-        `Two ${playerSelection.toLowerCase()}s. This one's a tie!`;
+function tieRound(playerSelection) {
+    if (playerSelection==="Scissors") {
+        resultMsg.textContent = 
+            `Two ${playerSelection.toLowerCase()}. This one's a tie!`;
+    } else {
+        resultMsg.textContent = 
+            `Two ${playerSelection.toLowerCase()}s. This one's a tie!`;
+    }
     ties += 1;
     tiesMsg.textContent = `Ties: ${ties}`;
 }

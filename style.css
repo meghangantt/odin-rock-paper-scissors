@@ -1,0 +1,56 @@
+body {
+    font-family: 'Concert One', cursive;
+    background-color: #A0D8E9;
+    color: #011b24;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div {
+    font-size: 24px;
+}
+
+.scoreboard,
+.rpsBtns,
+.resultMsg {
+    gap: 3%;
+    padding-bottom: 3%;
+}
+
+.scoreboard {
+    flex-direction: column;
+    align-items: center;
+}
+
+.rpsBtns {
+    justify-content: center;
+    align-content: stretch;
+}
+
+.btn {
+    border: 2px solid #246377;
+    font-family: 'Concert One', cursive;
+    color: #011b24;
+    font-size: 24px;
+    border-radius: 2px;
+}
+
+.rock,
+.paper,
+.scissors {
+    width: min-content;
+}
+
+.rock {
+    background-color: #F3A5BC
+}
+
+.paper {
+    background-color: #B4A7EB;
+}
+
+.scissors {
+    background-color: #A7DB8C;
+}
