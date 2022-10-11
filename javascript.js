@@ -1,3 +1,51 @@
+let wins = 0, losses = 0, ties = 0, rounds = 0;
+
+let winsMsg = document.querySelector('.winsMsg');
+winsMsg.textContent = `Wins: ${wins}`;
+
+let lossesMsg = document.querySelector('.lossesMsg');
+lossesMsg.textContent = `Losses: ${losses}`;
+
+let tiesMsg = document.querySelector('.tiesMsg');
+tiesMsg.textContent = `Ties: ${ties}`;
+
+const rockBtn = document.querySelector('.btn.rock');
+rockBtn.onclick = () => tryToPlay("Rock", getComputerChoice());
+
+const paperBtn = document.querySelector('.btn.paper');
+paperBtn.onclick = () => tryToPlay("Paper", getComputerChoice());
+
+const scissorsBtn = document.querySelector('.btn.scissors');
+scissorsBtn.onclick = () => tryToPlay("Scissors", getComputerChoice());
+
+let gameOver;
+
+function tryToPlay(playerSelection, computerSelection) {
+    if (gameOver) {
+        resultMsg.textContent = 'Press "Start New Game" to play again!';
+    } else {
+        playRound(playerSelection, computerSelection);
+    }
+}
+
+let resultMsg = document.querySelector('.resultMsg');
+resultMsg.textContent = "Choose your weapon to start the game!";
+
+const newGameBtn = document.querySelector('.btn.newGame');
+newGameBtn.onclick = () => newGame();
+
+function newGame() {
+    gameOver = false;
+    wins = 0;
+    winsMsg.textContent = `Wins: ${wins}`;
+    losses = 0;
+    lossesMsg.textContent = `Losses: ${losses}`;
+    ties = 0;
+    tiesMsg.textContent = `Ties: ${ties}`;
+    rounds = 0;
+    resultMsg.textContent = "Choose your weapon to start the game!";
+}
+
 function getComputerChoice() {
     let x = Math.floor(Math.random() * 3);
     let choice;
@@ -11,53 +59,59 @@ function getComputerChoice() {
     return choice;
 }
 
-let roundResult;
-let winMessage;
-let lossMessage;
-let tieMessage;
-
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-    winMessage = `${playerSelection} beats ${computerSelection.toLowerCase()}! You win!`;
-    lossMessage = `${computerSelection} beats ${playerSelection.toLowerCase()}. You lose.`;
-    tieMessage = `Two ${playerSelection.toLowerCase()}s. That's a tie!`;
-    if (computerSelection==playerSelection) {
-        roundResult = tieMessage;
+    rounds += 1;
+    let roundResult;
+    if (playerSelection===computerSelection) {
+        tieRound(playerSelection, computerSelection);
+    } else if (computerSelection=="Rock") {
+        (playerSelection=="Paper") ? winRound(playerSelection, computerSelection)
+            : loseRound(playerSelection, computerSelection);
+    } else if (computerSelection=="Paper") {
+        (playerSelection=="Scissors") ? winRound(playerSelection, computerSelection)
+            : loseRound(playerSelection, computerSelection);
+    } else if (computerSelection=="Scissors") {
+        (playerSelection=="Rock") ? winRound(playerSelection, computerSelection)
+            : loseRound(playerSelection, computerSelection);
     }
-    else if (computerSelection=="Rock") {
-        (playerSelection=="Paper") ? roundResult = "win" : roundResult = "loss";
-    }
-    else if (computerSelection=="Paper") {
-        (playerSelection=="Scissors") ? roundResult = "win" : roundResult = "loss";
-    }
-    else if (computerSelection=="Scissors") {
-        (playerSelection=="Rock") ? roundResult = "win" : roundResult = "loss";
-    }
-    return roundResult;
+    checkForWinner();
 }
 
-function game() {
-    let wins = 0;
-    let losses = 0;
-    let rounds = 0;
-    let userInput;
-    while (rounds < 5 && wins < 3 && losses < 3) {
-        userInput = prompt("Rock, paper, or scissors?");
-        roundResult = playRound(userInput, getComputerChoice());
-        if (roundResult=="win") {
-            console.log(winMessage);
-            wins++;
-        } else if (roundResult=="loss") {
-            console.log(lossMessage);
-            losses++;
-        } else {
-            console.log(tieMessage);
-        }
-        rounds++;
+function winRound(playerSelection, computerSelection) {
+    resultMsg.textContent = 
+        `${playerSelection} beats ${computerSelection.toLowerCase()}! You win this round!`;
+    wins += 1;
+    winsMsg.textContent = `Wins: ${wins}`;
+}
+
+function loseRound(playerSelection, computerSelection) {
+    resultMsg.textContent = 
+        `${computerSelection} beats ${playerSelection.toLowerCase()}. You lose this round.`;
+    losses += 1;
+    lossesMsg.textContent = `Losses: ${losses}`;
+}
+
+function tieRound(playerSelection, computerSelection) {
+    resultMsg.textContent = 
+        `Two ${playerSelection.toLowerCase()}s. This one's a tie!`;
+    ties += 1;
+    tiesMsg.textContent = `Ties: ${ties}`;
+}
+
+function checkForWinner() {
+    let haveAWinner = (rounds===5 || wins===3 || losses===3) ? true : false;
+    if (haveAWinner) {
+        endGame();
     }
-    let gameResult;
-    (wins > losses) ? gameResult = "win" : 
-    (wins < losses) ? gameResult = "loss" : gameResult = "tie";
-    return(gameResult);
+}
+
+function endGame() {
+    gameOver = true;
+    if (wins > losses) {
+        resultMsg.textContent = `You win the game ${wins} to ${losses}!`;
+    } else if (losses > wins) {
+        resultMsg.textContent = `You lose the game ${losses} to ${wins}.`;
+    } else {
+        resultMsg.textContent = `This game was a tie: ${losses} to ${wins} after 5 rounds.`;
+    }
 }
