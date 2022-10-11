@@ -10,6 +10,7 @@ body {
 
 div {
     font-size: 24px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -38,7 +39,8 @@ h1 {
     color: #011b24;
     font-size: 24px;
     border-radius: 2px;
-    height: max-content;
+    padding: 2px;
+    min-height: 30px;
 }
 
 .rock,
