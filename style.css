@@ -21,6 +21,10 @@ h1 {
 .rpsBtns,
 .resultMsg {
     gap: 3%;
+}
+
+.scoreboard,
+.resultMsg {
     padding-bottom: 3%;
 }
 
@@ -39,8 +43,8 @@ h1 {
     color: #011b24;
     font-size: 24px;
     border-radius: 2px;
-    padding: 7px;
-    min-height: 30px;
+    height: 36px;
+    line-height: 30px;
 }
 
 .newGame {
