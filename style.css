@@ -24,7 +24,8 @@ h1 {
 .rpsBtns {
     display: flex;
     justify-content: center;
-    gap: 5%;
+    gap: 7px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -36,11 +37,20 @@ h1 {
     color: #011b24;
     font-size: 24px;
     border-radius: 2px;
-    height: 36px;
+    min-height: 36px;
+    margin-top: 5%;
 }
 
 .newGame {
     background-color: #E5E28B;
+    flex-wrap: wrap;
+    margin-top: 0%;
+}
+
+.rock,
+.paper,
+.scissors {
+    width: 115px;
 }
 
 .rock {
