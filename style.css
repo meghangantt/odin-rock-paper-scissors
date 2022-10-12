@@ -21,10 +21,6 @@ h1 {
 .rpsBtns,
 .resultMsg {
     gap: 3%;
-}
-
-.scoreboard,
-.resultMsg {
     padding-bottom: 3%;
 }
 
