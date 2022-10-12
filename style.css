@@ -18,13 +18,13 @@ h1 {
 .scoreboard,
 .rpsBtns,
 .resultMsg {
-    gap: 3%;
-    padding-bottom: 3%;
+    padding-bottom: 5%;
 }
 
 .rpsBtns {
     display: flex;
     justify-content: center;
+    gap: 5%;
 }
 
 .btn {
