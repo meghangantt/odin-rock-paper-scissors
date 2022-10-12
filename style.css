@@ -18,7 +18,7 @@ h1 {
 .scoreboard,
 .rpsBtns,
 .resultMsg {
-    padding-bottom: 5%;
+    margin-bottom: 15px;
 }
 
 .rpsBtns {
@@ -38,7 +38,7 @@ h1 {
     font-size: 24px;
     border-radius: 2px;
     min-height: 36px;
-    margin-top: 5%;
+    margin-top: 1px;
 }
 
 .newGame {
