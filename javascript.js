@@ -34,7 +34,6 @@ let resultMsg = document.querySelector('.resultMsg');
 resultMsg.textContent = "Choose your weapon to start the game!";
 
 const newGameBtn = document.querySelector('.btn.newGame');
-newGameBtn.style.cssText = 'background: #E5E28B';
 newGameBtn.onclick = () => newGame();
 
 function newGame() {
