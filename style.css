@@ -21,6 +21,10 @@ h1 {
     margin-bottom: 15px;
 }
 
+.resultMsg {
+    height: 48px;
+}
+
 .rpsBtns {
     display: flex;
     justify-content: center;
