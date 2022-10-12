@@ -44,7 +44,9 @@ h1 {
     font-size: 24px;
     border-radius: 2px;
     height: 36px;
-    line-height: 2px;
+    line-height: 0px;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .newGame {
