@@ -16,13 +16,13 @@ h1 {
 }
 
 .scoreboard,
-.rpsBtns,
-.resultMsg {
+.rpsBtns {
     margin-bottom: 15px;
 }
 
 .resultMsg {
-    height: 48px;
+    min-height: 63px;
+    margin-bottom: 3px;
 }
 
 .rpsBtns {
