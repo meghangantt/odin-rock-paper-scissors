@@ -44,17 +44,11 @@ h1 {
     font-size: 24px;
     border-radius: 2px;
     height: 36px;
-    line-height: 30px;
+    line-height: 2px;
 }
 
 .newGame {
     background-color: #E5E28B;
-}
-
-.rock,
-.paper,
-.scissors {
-    width: min-content;
 }
 
 .rock {
